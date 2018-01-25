@@ -1,0 +1,5 @@
+salt-formula-debmirror (2018.1) xenial; urgency=medium
+
+  * Initial release
+
+ -- Alexey Zvyagitnsev azvyagintsev@mirantis.com  Wed, 24 Jan 2018 12:22:32 GMT

@@ -1,0 +1,85 @@
+title: "debmirror runner"
+description: |-
+  Simple formula,which allows to run parametrized debmirror
+type: object
+additionalProperties: true
+
+required:
+  - enabled
+
+properties:
+  enabled:
+    description: |-
+      Enables debmirror processing.
+    type: boolean
+  mirrors:
+    description: |-
+      Set of mirror to sync
+    type: object
+    additionalProperties: false
+    minProperties: 1
+    type: object
+    patternProperties:
+      '^[a-z][-a-z0-9_]*$':
+        type: object
+        $ref: "#/definitions/debmirror:mirror"
+
+definitions:
+  debmirror:mirror:
+    type: object
+    additionalProperties: false
+    properties:
+      extra_flags:
+        type: string
+        example: '--verbose --progress --nosource --no-check-gpg --rsync-extra=none'
+      method:
+        type: string
+        eval: [ "rsync", "http" , "https"]
+      arch:
+        type: array
+        items:
+          type: string
+          enum: [ 'amd64', 'i386' ]
+      mirror_host:
+        type: string
+        example:  "mirror.mirantis.com"
+      mirror_root:
+        type: string
+        example: ':mirror/nightly/ubuntu/'
+      target_dir:
+        type: string
+        example: "/var/www/mirror/ubuntu/"
+      log_file:
+        type: string
+        example: "/var/www/mirror/target01_log.log"
+      dist:
+        type: array
+        items:
+          type: string
+        example: [ xenial , xenial-security, xenial-updates ]
+      section:
+        type: array
+        items:
+          type: string
+        example: [ main multiverse, restricted, universe ]
+      exclude_deb_section:
+        type: array
+        items:
+          type: string
+        example: [ games, gnome, Xfce, sound, electronics, graphics, hamradio , doc, localization, kde, video ]
+      filter:
+        type: object
+        items:
+          type: array
+        example:
+          00: "--exclude=/"
+          01: "--exclude='/android*'"
+          02: "--exclude='/firefox*'"
+          03: "--exclude='/chromium-browser*'"
+      lock_target:
+        type: boolean
+        description: "Create lockfile, to prevent future repo updates"
+      force:
+        type: boolean
+        description: "Ignore lockfile"
+

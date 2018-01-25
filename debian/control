@@ -1,0 +1,15 @@
+Source: salt-formula-debmirror
+Maintainer: Alexey Zvyagitnsev <azvyagintsev@mirantis.com>
+Section: admin
+Priority: optional
+Build-Depends: debhelper (>= 9), salt-master, python, python-yaml
+Standards-Version: 3.9.6
+Homepage: https://github.com/salt-formulas/salt-formula-debmirror
+Vcs-Browser: https://github.com/salt-formulas/salt-formula-debmirror
+Vcs-Git: https://github.com/salt-formulas/salt-formula-debmirror.git
+
+Package: salt-formula-debmirror
+Architecture: all
+Depends: ${misc:Depends}
+Description: debmirror salt formula
+ Install and configure debmirror.

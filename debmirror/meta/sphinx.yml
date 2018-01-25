@@ -1,0 +1,8 @@
+{%- from "debmirror/map.jinja" import client with context %}
+# Fill in documentation details
+doc:
+  name: debmirror
+  description: Simple formula,which allows to run parametrized debmirror
+  role:
+    client:
+      name: client
