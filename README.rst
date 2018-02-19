@@ -12,6 +12,7 @@ Sample Pillars
 Example for one debmirror mirror, ubuntu.
 
 .. code-block:: yaml
+
     parameters:
       debmirror:
         client:

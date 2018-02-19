@@ -28,13 +28,23 @@ definitions:
   debmirror:mirror:
     type: object
     additionalProperties: false
+    required:
+      - mirror_host
+      - mirror_root
+      - target_dir
     properties:
       extra_flags:
-        type: string
-        example: '--verbose --progress --nosource --no-check-gpg --rsync-extra=none'
+        type: array
+        items:
+          type: string
+        example: [ "--verbose", "--progress", "--nosource" , "--no-check-gpg", "--rsync-extra=none"]
       method:
         type: string
         eval: [ "rsync", "http" , "https"]
+        description: -|
+          Specify the method to download files. Currently, supported
+          methods are ftp, http, https, and rsync. The file method is
+          experimentally supported
       arch:
         type: array
         items:
@@ -46,9 +56,13 @@ definitions:
       mirror_root:
         type: string
         example: ':mirror/nightly/ubuntu/'
+        description: -|
+          Specifies the directory on the remote host that is the root of the
+          Ubuntu archive. The root directory has a dists subdirectory.
       target_dir:
         type: string
         example: "/var/www/mirror/ubuntu/"
+        description: "Destination folder for mirror"
       log_file:
         type: string
         example: "/var/www/mirror/target01_log.log"
@@ -61,12 +75,16 @@ definitions:
         type: array
         items:
           type: string
-        example: [ main multiverse, restricted, universe ]
+        example: [ main, multiverse, restricted, universe ]
+        description: Specify the section of Ubuntu to mirror.
       exclude_deb_section:
         type: array
         items:
           type: string
         example: [ games, gnome, Xfce, sound, electronics, graphics, hamradio , doc, localization, kde, video ]
+        description: -|
+          Never download any files whose Debian Section (games, doc, oldlibs,
+          science, ...) match the regex.
       filter:
         type: object
         items:
@@ -76,9 +94,18 @@ definitions:
           01: "--exclude='/android*'"
           02: "--exclude='/firefox*'"
           03: "--exclude='/chromium-browser*'"
+        description: |
+          Sorted list of any kind filtered options.
+          Possible marks are:
+          --ignore=regex
+              Never delete any files whose filenames match the regex.
+          --exclude=regex
+              Never download any files whose filenames match the regex.
+          --include=regex
+              Don't exclude any files whose filenames match the regex.
       lock_target:
         type: boolean
-        description: "Create lockfile, to prevent future repo updates"
+        description: "Create lockfile inside target dic, to prevent future repo updates"
       force:
         type: boolean
         description: "Ignore lockfile"

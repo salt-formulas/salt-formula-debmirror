@@ -67,7 +67,7 @@ def _no_change(name, resource, test=False):
 def _check_state(name, tgt):
     lock_file = _get_target_path(name,tgt)['lock_file']
     if os.path.isfile(lock_file) and not tgt.get('force', False) :
-      	return _no_change(name, '{} exist=>repo locked.'.format(lock_file))
+        return _no_change(name, '{} exist=>repo locked.'.format(lock_file))
     return False
 
 def _get_target_path(name,tgt):
