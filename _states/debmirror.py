@@ -110,7 +110,7 @@ def _update_mirror(name,tgt):
     # init file logger
     l_dir = os.path.dirname(tgt['log_file'])
     if not os.path.isdir(l_dir):
-        __salt__['file.makedirs'](l_dir)
+        __salt__['file.makedirs'](l_dir + '/')
     fh = logging.FileHandler("{0}".format(_get_target_path(name,tgt)['log_file']))
     fh.setLevel(logging.DEBUG)
     fh_format = logging.Formatter('%(asctime)s - %(lineno)d - %(levelname)-8s - %(message)s')
