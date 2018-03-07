@@ -93,6 +93,9 @@ def _get_cmdline(name,tgt):
       cmdline += ' --root="{}"'.format(tgt.get('mirror_root'))
     if tgt.get('arch', 'amd64'):
       cmdline += ' --arch=' + ','.join(tgt.get('arch'))
+    if tgt.get('exclude_deb_section'):
+      for section in tgt['exclude_deb_section']:
+        cmdline += " --exclude-deb-section='" + section + "'"
     if tgt.get('filter'):
       for key, value in enumerate(sorted(tgt['filter'])):
           cmdline += " " + tgt['filter'][value]
