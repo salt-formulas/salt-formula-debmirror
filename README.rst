@@ -1,15 +1,11 @@
+=====
+Usage
+=====
 
-==================================
-debmirror Formula
-==================================
+This file provides the debmirror sample pillars configurations for different
+use cases.
 
-Service debmirror description
-
-
-Sample Pillars
-==============
-
-Example for one debmirror mirror, ubuntu.
+A sample of one debmirror mirror configuration (Ubuntu):
 
 .. code-block:: yaml
 
@@ -43,45 +39,27 @@ Example for one debmirror mirror, ubuntu.
                 08: "--include='/main(.*)python-(.*)doc'"
                 09: "--include='/main(.*)python-(.*)network'"
 
-More Information
-================
+**Documentation and bugs**
+
+* http://salt-formulas.readthedocs.io/
+   Learn how to install and update salt-formulas
+
+* https://github.com/salt-formulas/salt-formula-debmirror/issues
+   In the unfortunate event that bugs are discovered, report the issue to the
+   appropriate issue tracker. Use the Github issue tracker for a specific salt
+   formula
+
+* https://launchpad.net/salt-formulas
+   For feature requests, bug reports, or blueprints affecting the entire
+   ecosystem, use the Launchpad salt-formulas project
 
 * https://github.com/salt-formulas/salt-formula-debmirror
-* Check debmirror/schemas/client.yaml for parameters description
+   Develop the salt-formulas projects in the master branch and then submit pull
+   requests against a specific formula
 
+* https://launchpad.net/~salt-formulas-users
+   Join the salt-formulas-users team and subscribe to mailing list if required
 
-Documentation and Bugs
-======================
-
-To learn how to install and update salt-formulas, consult the documentation
-available online at:
-
-    http://salt-formulas.readthedocs.io/
-
-In the unfortunate event that bugs are discovered, they should be reported to
-the appropriate issue tracker. Use GitHub issue tracker for specific salt
-formula:
-
-    https://github.com/salt-formulas/salt-formula-debmirror/issues
-
-For feature requests, bug reports or blueprints affecting entire ecosystem,
-use Launchpad salt-formulas project:
-
-    https://launchpad.net/salt-formulas
-
-Developers wishing to work on the salt-formulas projects should always base
-their work on master branch and submit pull request against specific formula.
-
-You should also subscribe to mailing list (salt-formulas@freelists.org):
-
-    https://www.freelists.org/list/salt-formulas
-
-Any questions or feedback is always welcome so feel free to join our IRC
-channel:
-
-    #salt-formulas @ irc.freenode.net
-
-Read more
-=========
-
-* links
+* #salt-formulas @ irc.freenode.net
+   Use this IRC channel in case of any questions or feedback which is always
+   welcome
