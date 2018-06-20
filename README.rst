@@ -15,6 +15,11 @@ A sample of one debmirror mirror configuration (Ubuntu):
           enabled: true
           mirrors:
             target01:
+              http_proxy : "url"
+              https_proxy: "url"
+              ftp_proxy: "url"
+              rsync_proxy: "url"
+              no_proxy: ['val1', 'val2']
               force: False
               lock_target: True
               extra_flags: [ '--verbose', '--progress', '--nosource', '--no-check-gpg', '--rsync-extra=none' ]

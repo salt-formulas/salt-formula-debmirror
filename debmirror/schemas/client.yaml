@@ -33,6 +33,28 @@ definitions:
       - mirror_root
       - target_dir
     properties:
+      http_proxy:
+        type: string
+        description: -|
+          Specify proxy parameter.
+      https_proxy:
+        type: string
+        description: -|
+          Specify proxy parameter.
+      ftp_proxy:
+        type: string
+        description: -|
+          Specify proxy parameter.
+      rsync_proxy:
+        type: string
+        description: -|
+          Specify proxy parameter.
+      no_proxy:
+        type: array
+        items:
+          type: string
+        description: -|
+          Specify list of host-exludes for proxy.
       extra_flags:
         type: array
         items:
