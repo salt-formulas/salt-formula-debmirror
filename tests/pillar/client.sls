@@ -3,6 +3,8 @@ debmirror:
     enabled: true
     mirrors:
       target01:
+        enabled: true
+        fetch_retry: 1
         extra_flags: [ "--verbose", "--progress", "--nosource", "--no-check-gpg", "--rsync-extra=none" ]
         method: "rsync" # string
         arch: [ 'amd64' ]

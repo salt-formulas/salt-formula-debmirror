@@ -5,6 +5,7 @@ Usage
 This file provides the debmirror sample pillars configurations for different
 use cases.
 
+See debmirror/schemas/*.yaml for all possible options
 A sample of one debmirror mirror configuration (Ubuntu):
 
 .. code-block:: yaml
@@ -15,6 +16,8 @@ A sample of one debmirror mirror configuration (Ubuntu):
           enabled: true
           mirrors:
             target01:
+              enabled: true
+              fetch_retry: 3
               http_proxy : "url"
               https_proxy: "url"
               ftp_proxy: "url"

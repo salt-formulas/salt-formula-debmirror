@@ -33,6 +33,14 @@ definitions:
       - mirror_root
       - target_dir
     properties:
+      fetch_retry:
+        description: |-
+          Number of retries, to fetch mirror. Works only with salt 2017+.
+        type: integer
+      enabled:
+        description: |-
+          Enables exact mirror processing.
+        type: boolean
       http_proxy:
         type: string
         description: -|
