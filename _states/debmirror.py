@@ -105,6 +105,11 @@ def _get_cmdline(name, tgt):
     cmdline = " debmirror "
     if tgt.get('extra_flags'):
         cmdline += ' '.join(tgt['extra_flags'])
+    if tgt.get('rsync_options'):
+        rsync_options = tgt.get('rsync_options')
+        if tgt.get('rsync_options_defaults', True):
+            rsync_options = ['-aL', '--partial'] + rsync_options
+        cmdline += " --rsync-options='" + ' '.join(rsync_options) + "'"
     if tgt.get('dist'):
         cmdline += ' --dist=' + ",".join(tgt['dist'])
     if tgt.get('section'):
